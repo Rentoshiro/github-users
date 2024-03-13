@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { GithubContext } from "../context/context";
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
@@ -8,17 +8,19 @@ const Repos = () => {
   const languages = repos.reduce((total, item) => {
     const { language, stargazers_count } = item;
     if (!language) return total;
-    //daca nu am asa proprietate in !total[language] atunci va crea total[language] = { label: language, value: 1 };
+    // daca nu am asa proprietate in !total[language] atunci va crea total'
+    // total[language] = { label: language, value: 1 };
     if (!total[language]) {
       total[language] = { label: language, value: 1, stars: stargazers_count };
     } else {
-      //daca limbajul este pastram ceia ce avem + adaugam 1
+      //   //daca limbajul este pastram ceia ce avem + adaugam 1
       total[language] = {
         ...total[language],
         value: total[language].value + 1,
         stars: total[language].stars + stargazers_count,
       };
     }
+
     return total;
   }, {});
 
