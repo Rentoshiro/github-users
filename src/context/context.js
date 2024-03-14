@@ -21,8 +21,6 @@ const GithubProvider = ({ children }) => {
   const [error, setError] = useState({ show: false, msg: "" });
 
   async function searchGithubUser(user) {
-    //toggleError
-    //setLoading(true)
     try {
       setIsLoading(true);
       const response = await axios.get(`${rootUrl}/users/${user}`);
